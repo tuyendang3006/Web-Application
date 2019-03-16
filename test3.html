@@ -1,0 +1,41 @@
+<!DOC TYPE html>
+<html>
+    <head>
+        <title>Formulaire</title>
+    </head>
+    <body>
+        <center>
+            Sexe: <input type="radio" id="idHomme" onclick="checksexe(0)" value="Homme"> Homme  
+            <input type="radio" id="idFemme" onclick="checksexe(1)" value="Femme"> Femme</br> 
+            
+            <h2 style="background-color:darkgreen;">Vous devez selectionner votre section</h2> </br>
+
+            Nom: <input type="text" id="idName"> </br> </br>
+            Prenom: <input type="text" id="idLastName"> </br> </br>
+            Age: <input type="number" id="idAge" min="5" max="140" step="1" name="age" pattern="\d+"> </br> 
+
+            <h2 style="background-color:darkgreen;">L'age doit pris entre 5 et 140</h2> </br>
+
+            Preuso: <input type="text" id="idPreuso"> </br> </br>
+            Mot de passe: <input type="password" id="idPassword"> </br> </br>
+            Mot de passe confirmé: <input type="password" id="idPassConf"> </br> </br>
+            Pays: <select type="select" id="idSelect" >
+                <option>Argentie</option>
+                <option>Anglette</option> 
+                <option>Aux Etas Unis</option>
+                <option>Allemagne</option>
+                <option>Espagne</option>
+                <option>Chine</option>
+                <option>France</option>
+                <option>Japon</option>
+                <option>Vietnam</option>
+                </select>
+                </br> </br>
+            <input type="checkbox" id="idcheckbox" onclick="check()" value=" "> 
+            Je désire recevoir la nouvelle lettre chaque mois </br> </br>
+            <script src="js/test3.js"></script> </br> </br>
+            <input type="button" value="Soumettre" onclick="verif_formulaire()";/>
+            <input type="button" value="Annuler" onClick="cancel()">
+        </center>
+    </body>
+</html>
