@@ -1,0 +1,29 @@
+<!DOC TYPE html>
+<html ng-app="todoApp">
+    <head>
+        <title>Todo</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-g" />
+    </head>
+    <body ng-controller="TodoCtrl">
+        <form ng-submit="addTask()">
+            Ajouter la task : <input type="text" ng-model="taskName"/>
+            <button type"button" >Ajouter</button>
+            <span onclick="newElement()"></span>
+        </form>
+        <br/>
+        <br/>
+        
+        <ul id="myUL">
+            <li>Faire des exercices</li>
+            <li class="checked">Payer</li>
+            <li>Voir Nicolas</li>
+            <li>Lire le livre</li>
+            <li>Aller au bureau</li>
+        </ul>
+
+          <script src="js/test8.js"></script>
+
+        </div>
+        
+    </body>
+</html>
