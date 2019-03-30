@@ -1,55 +1,52 @@
-// Créer un "ferme" bouton et ajouter à chaque liste de task
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
+var todoApp=angular.module('todoApp',[]);
+todoApp.controller('taskCtrl',['$scope',function($scope){
+        $scope.taskSet=[
+            {
+                taskName:'Suivre les cours',
+                checked:true
+            },
+            {
+                taskName:'Manger du déjeuner',
+                checked:false
+            },
+            {
+                taskName:'Faire des exercices',
+                checked:false
+            }];
+    
+    
+    $scope.addTask=function(){
+        if($scope.taskName != '')
+        {
+            //console.log($scope.taskName);
+            $scope.taskSet.push(
+                {
+                    taskName: $scope.taskName,
+                    checked:false
+                });
+            $scope.taskName='';
+        }
+    };
+    $scope.supprimer=function(task){
+        //console.log(task.taskName);
+        $scope.taskSet.splice($scope.taskSet.indexOf(task), 1);
 
-// Cliquer sur un ferme bouton pour cacher ce task item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
+    };
+    $scope.finishedTasks=[];
 
-// Ajouter symbol "vérifié" quand on clique un task
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
-
-// Créer une nouvelle liste de task quand on clique le bouton "Ajouter"
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
-
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-}
+    $scope.checkedIndex=function(task){
+        angular.forEach($scope.taskSet,function(value,index){
+            if(value.checked == true)
+            $scope.finishedTasks.push(value);
+        });
+        if($scope.finishedTasks.indexOf(task) == -1){
+            $scope.finishedTasks.push(task);
+        }
+        else
+            $scope.finishedTasks.splice($scope.finishedTasks.indexOf(task),1);
+        angular.forEach($scope.finishedTasks,function(value,index) {
+            console.log(value.taskName);
+        });
+    };
+    
+}]);
